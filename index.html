@@ -548,6 +548,132 @@
             margin-bottom: 10px;
         }
         
+        /* 新添加的滑动容器样式 */
+        .scrollable-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 10px;
+            margin: 20px 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--packaging-blue) #f0f7ff;
+        }
+        
+        .scrollable-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .scrollable-container::-webkit-scrollbar-track {
+            background: #f0f7ff;
+            border-radius: 10px;
+        }
+        
+        .scrollable-container::-webkit-scrollbar-thumb {
+            background: var(--packaging-blue);
+            border-radius: 10px;
+        }
+        
+        .scrollable-item {
+            min-width: 280px;
+            background: linear-gradient(135deg, #ffffff, #f0f7ff);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border-left: 5px solid var(--packaging-blue);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(42, 109, 204, 0.1);
+            flex-shrink: 0;
+        }
+        
+        .scrollable-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), 0 0 15px rgba(42, 109, 204, 0.1);
+        }
+        
+        .scrollable-item h4 {
+            font-size: 1.5rem;
+            color: var(--packaging-blue);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .scrollable-item p {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .scrollable-item .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .scrollable-item .stat {
+            text-align: center;
+        }
+        
+        .scrollable-item .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--packaging-blue);
+        }
+        
+        .scrollable-item .stat-label {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        
+        .country-flag {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .target-market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .target-market-item {
+            background: linear-gradient(135deg, #ffffff, #f0f7ff);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(42, 109, 204, 0.1);
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .target-market-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), 0 0 15px rgba(42, 109, 204, 0.1);
+        }
+        
+        .target-market-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--packaging-blue);
+        }
+        
+        .target-market-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 25px 0;
+        }
+        
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2.2rem;
@@ -557,7 +683,7 @@
                 font-size: 1.4rem;
             }
             
-            .data-grid, .egatee-stats, .features-grid {
+            .data-grid, .egatee-stats, .features-grid, .target-market-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -583,6 +709,14 @@
                 margin-right: 0;
                 margin-bottom: 15px;
             }
+            
+            .two-column-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .scrollable-item {
+                min-width: 250px;
+            }
         }
     </style>
 </head>
@@ -607,7 +741,7 @@
                     <p>年均增长率</p>
                 </div>
                 <div class="header-stat">
-                    <h3>45万+</h3>
+                    <h3>60万+</h3>
                     <p>潜在包装产品采购商</p>
                 </div>
                 <div class="header-stat">
@@ -632,42 +766,92 @@
                 </div>
             </div>
             
-            <h3 style="margin-top: 20px; color: var(--packaging-blue);">主要产品与服务</h3>
-            <div class="product-showcase">
-                <div class="product-item">
+            <h3 style="margin-top: 20px; color: var(--packaging-blue);">主要产品展示</h3>
+            <div class="scrollable-container">
+                <div class="scrollable-item">
                     <div class="product-icon">
                         <i class="fas fa-utensils"></i>
                     </div>
-                    <h4>食品包装</h4>
-                    <p>高档食品、肉制品包装</p>
+                    <h4>食品包装袋</h4>
+                    <p>高档食品、肉制品包装，采用食品级材料，安全卫生</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-value">$25-70</div>
+                            <div class="stat-label">千个价格</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">85%</div>
+                            <div class="stat-label">需求率</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-item">
+                <div class="scrollable-item">
                     <div class="product-icon">
                         <i class="fas fa-flask"></i>
                     </div>
-                    <h4>化工包装</h4>
-                    <p>各类化工产品包装袋</p>
+                    <h4>化工包装袋</h4>
+                    <p>各类化工产品包装，耐腐蚀，防泄漏设计</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-value">$35-55</div>
+                            <div class="stat-label">千个价格</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">65%</div>
+                            <div class="stat-label">需求率</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-item">
+                <div class="scrollable-item">
                     <div class="product-icon">
                         <i class="fas fa-toilet-paper"></i>
                     </div>
                     <h4>生活用纸包装</h4>
-                    <p>纸巾、卫生纸等外包装</p>
+                    <p>纸巾、卫生纸等外包装，美观实用</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-value">$20-35</div>
+                            <div class="stat-label">千个价格</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">78%</div>
+                            <div class="stat-label">需求率</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-item">
+                <div class="scrollable-item">
                     <div class="product-icon">
                         <i class="fas fa-box"></i>
                     </div>
                     <h4>真空/蒸煮袋</h4>
-                    <p>食品保鲜、烹饪专用</p>
+                    <p>食品保鲜、烹饪专用，耐高温高压</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-value">$60-90</div>
+                            <div class="stat-label">千个价格</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">72%</div>
+                            <div class="stat-label">需求率</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-item">
+                <div class="scrollable-item">
                     <div class="product-icon">
                         <i class="fas fa-cogs"></i>
                     </div>
                     <h4>包装机械</h4>
-                    <p>销售、安装与维护</p>
+                    <p>销售、安装与维护一站式服务</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-value">$5K-50K</div>
+                            <div class="stat-label">单价范围</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">58%</div>
+                            <div class="stat-label">需求率</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -695,98 +879,26 @@
                     <p>工业包装细分市场(美元)</p>
                 </div>
             </div>
-            <p>非洲塑料包装市场增长迅速，主要驱动因素包括：人口增长与城市化、消费品需求增加、零售业扩张、食品加工业发展以及环保包装趋势。尼日利亚、南非、肯尼亚、埃及和加纳是最大的市场。</p>
+            <p>非洲塑料包装市场增长迅速，主要驱动因素包括：人口增长与城市化、消费品需求增加、零售业扩张、食品加工业发展以及环保包装趋势。东非和西非市场增长尤为显著。</p>
         </section>
         
-        <section class="card">
-            <h2 class="card-title"><i class="fas fa-users"></i>主要竞争对手分析</h2>
-            <div class="chart-container">
-                <canvas id="competitorsChart"></canvas>
-            </div>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>竞争对手</th>
-                            <th>国家/地区</th>
-                            <th>市场份额</th>
-                            <th>主要产品</th>
-                            <th>优势</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Polypak Africa</td>
-                            <td>南非</td>
-                            <td>18%</td>
-                            <td>全系列塑料包装</td>
-                            <td>本地生产，物流快捷</td>
-                        </tr>
-                        <tr>
-                            <td>Nampak</td>
-                            <td>南非</td>
-                            <td>15%</td>
-                            <td>食品、饮料包装</td>
-                            <td>品牌知名度高，技术先进</td>
-                        </tr>
-                        <tr>
-                            <td>本地中小型厂商</td>
-                            <td>非洲各国</td>
-                            <td>35%</td>
-                            <td>基础塑料包装</td>
-                            <td>价格低廉，反应迅速</td>
-                        </tr>
-                        <tr>
-                            <td>中国其他出口商</td>
-                            <td>中国</td>
-                            <td>12%</td>
-                            <td>中低端包装袋</td>
-                            <td>价格优势，种类丰富</td>
-                        </tr>
-                        <tr>
-                            <td>印度包装企业</td>
-                            <td>印度</td>
-                            <td>8%</td>
-                            <td>塑料包装</td>
-                            <td>地理优势，文化相近</td>
-                        </tr>
-                        <tr>
-                            <td>国际品牌</td>
-                            <td>欧美</td>
-                            <td>12%</td>
-                            <td>高端特种包装</td>
-                            <td>技术领先，质量可靠</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        
-        <section class="card">
-            <h2 class="card-title"><i class="fas fa-shopping-cart"></i>经销商采购偏好分析</h2>
-            <div class="chart-container">
-                <canvas id="preferencesChart"></canvas>
-            </div>
-            <div class="data-grid">
-                <div class="data-item">
-                    <h3>82%</h3>
-                    <p>重视产品价格竞争力</p>
+        <div class="two-column-layout">
+            <section class="card">
+                <h2 class="card-title"><i class="fas fa-users"></i>主要竞争对手</h2>
+                <div class="chart-container">
+                    <canvas id="competitorsChart"></canvas>
                 </div>
-                <div class="data-item">
-                    <h3>76%</h3>
-                    <p>关注产品质量与耐用性</p>
+                <p>非洲塑料包装市场竞争格局分散，本地中小厂商占主导，但产品质量参差不齐。国际品牌主要占据高端市场，中国供应商在中端市场具有明显价格优势。</p>
+            </section>
+            
+            <section class="card">
+                <h2 class="card-title"><i class="fas fa-shopping-cart"></i>经销商采购偏好</h2>
+                <div class="chart-container">
+                    <canvas id="preferencesChart"></canvas>
                 </div>
-                <div class="data-item">
-                    <h3>68%</h3>
-                    <p>需要定制化设计服务</p>
-                </div>
-                <div class="data-item">
-                    <h3>63%</h3>
-                    <p>看重交货周期与稳定性</p>
-                </div>
-            </div>
-            <p>非洲经销商对塑料包装的采购偏好：价格敏感度高，但不愿牺牲基本质量；需要适应非洲高温高湿环境的产品；对小批量、多批次订单有需求；重视包装设计的本地化适应性；对供应商的技术支持能力有一定要求。</p>
-        </section>
+                <p>非洲经销商对塑料包装的采购偏好：价格敏感度高，但不愿牺牲基本质量；需要适应非洲高温高湿环境的产品；对小批量、多批次订单有需求。</p>
+            </section>
+        </div>
         
         <section class="card">
             <h2 class="card-title"><i class="fas fa-tags"></i>B端价格区间分析</h2>
@@ -848,60 +960,117 @@
         
         <section class="card">
             <h2 class="card-title"><i class="fas fa-bullseye"></i>重点目标市场及进入策略</h2>
+            
             <div class="highlight">
                 <p>基于塑料包装需求、经济增长潜力和贸易便利性，建议优先进入以下非洲国家：</p>
-                <ul>
-                    <li><span class="badge badge-primary">尼日利亚</span> - 非洲最大经济体，食品加工业发达，包装需求旺盛</li>
-                    <li><span class="badge badge-primary">肯尼亚</span> - 东非门户，零售业快速发展，包装标准较高</li>
-                    <li><span class="badge badge-primary">南非</span> - 非洲最成熟市场，对高质量包装需求大</li>
-                    <li><span class="badge badge-primary">加纳</span> - 西非稳定经济体，消费品市场增长迅速</li>
-                    <li><span class="badge badge-primary">埃及</span> - 北非最大市场，工业包装需求强劲</li>
-                </ul>
+                <div class="target-market-grid">
+                    <div class="target-market-item">
+                        <div class="country-flag">
+                            <i class="fas fa-flag" style="color: #008751;"></i>
+                        </div>
+                        <h4>尼日利亚</h4>
+                        <p>非洲最大经济体，食品加工业发达，包装需求旺盛，人口超过2亿</p>
+                        <div class="badge badge-primary">首选市场</div>
+                    </div>
+                    <div class="target-market-item">
+                        <div class="country-flag">
+                            <i class="fas fa-flag" style="color: #000000;"></i>
+                        </div>
+                        <h4>肯尼亚</h4>
+                        <p>东非门户，零售业快速发展，包装标准较高，政治稳定</p>
+                        <div class="badge badge-success">重点市场</div>
+                    </div>
+                    <div class="target-market-item">
+                        <div class="country-flag">
+                            <i class="fas fa-flag" style="color: #1EB53A;"></i>
+                        </div>
+                        <h4>坦桑尼亚</h4>
+                        <p>东非新兴市场，农业发展迅速，包装需求增长快</p>
+                        <div class="badge badge-warning">潜力市场</div>
+                    </div>
+                    <div class="target-market-item">
+                        <div class="country-flag">
+                            <i class="fas fa-flag" style="color: #FCDC04;"></i>
+                        </div>
+                        <h4>乌干达</h4>
+                        <p>东非内陆国家，制造业发展迅速，包装进口依赖度高</p>
+                        <div class="badge badge-warning">潜力市场</div>
+                    </div>
+                    <div class="target-market-item">
+                        <div class="country-flag">
+                            <i class="fas fa-flag" style="color: #CF0921;"></i>
+                        </div>
+                        <h4>加纳</h4>
+                        <p>西非稳定经济体，消费品市场增长迅速，贸易便利</p>
+                        <div class="badge badge-success">重点市场</div>
+                    </div>
+                </div>
             </div>
             
             <h3 style="margin-top: 25px; color: var(--packaging-blue);">市场进入策略建议</h3>
-            <ul style="list-style-type: none;">
-                <li style="padding: 10px 0; border-bottom: 1px solid rgba(42, 109, 204, 0.1);"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i><strong>产品本地化适配：</strong>针对非洲市场设计适合当地审美和文化习惯的包装图案</li>
-                <li style="padding: 10px 0; border-bottom: 1px solid rgba(42, 109, 204, 0.1);"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i><strong>建立分级产品线：</strong>提供经济型、标准型和高端型产品满足不同层次需求</li>
-                <li style="padding: 10px 0; border-bottom: 1px solid rgba(42, 109, 204, 0.1);"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i><strong>灵活订单策略：</strong>接受小批量试订单，降低经销商采购风险</li>
-                <li style="padding: 10px 0; border-bottom: 1px solid rgba(42, 109, 204, 0.1);"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i><strong>包装机械配套方案：</strong>提供包装机械销售、安装和培训一站式服务</li>
-                <li style="padding: 10px 0;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i><strong>利用跨境电商平台：</strong>通过egatee等专业平台直接对接非洲本地经销商</li>
-            </ul>
+            <div class="two-column-layout">
+                <div>
+                    <ul style="list-style-type: none;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(42, 109, 204, 0.1);"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i><strong>产品本地化适配：</strong>针对非洲市场设计适合当地审美和文化习惯的包装图案</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(42, 109, 204, 0.1);"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i><strong>建立分级产品线：</strong>提供经济型、标准型和高端型产品满足不同层次需求</li>
+                        <li style="padding: 10px 0;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i><strong>灵活订单策略：</strong>接受小批量试订单，降低经销商采购风险</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul style="list-style-type: none;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(42, 109, 204, 0.1);"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i><strong>包装机械配套方案：</strong>提供包装机械销售、安装和培训一站式服务</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(42, 109, 204, 0.1);"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i><strong>利用跨境电商平台：</strong>通过egatee等专业平台直接对接非洲本地经销商</li>
+                        <li style="padding: 10px 0;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i><strong>建立本地仓储：</strong>在重点市场建立仓储，缩短交货周期</li>
+                    </ul>
+                </div>
+            </div>
         </section>
         
         <section class="card">
             <h2 class="card-title"><i class="fas fa-address-book"></i>潜在经销商联系方式</h2>
             <p>以下为经过初步筛选的非洲地区潜在经销商信息：</p>
-            <ul class="contact-list">
-                <li>
-                    <strong>Packaging Solutions Africa Ltd.</strong> (尼日利亚)<br>
-                    联系人：Adebayo Johnson<br>
-                    电话：+234-80-1234-5678<br>
-                    邮箱：a.johnson@packagingafrica.ng<br>
-                    主营：食品包装、工业包装，年采购量约$500,000
-                </li>
-                <li>
-                    <strong>East Africa Packaging Distributors</strong> (肯尼亚)<br>
-                    联系人：James Mwangi<br>
-                    电话：+254-70-9876-5432<br>
-                    邮箱：j.mwangi@eastafricapackaging.co.ke<br>
-                    主营：零售包装、定制包装设计，年采购量约$300,000
-                </li>
-                <li>
-                    <strong>South Africa Plastics Co.</strong> (南非)<br>
-                    联系人：Susan van der Merwe<br>
-                    电话：+27-11-123-4567<br>
-                    邮箱：susan@saplastics.co.za<br>
-                    主营：高端食品包装、真空包装，年采购量约$800,000
-                </li>
-                <li>
-                    <strong>Ghana Packaging Imports</strong> (加纳)<br>
-                    联系人：Kwame Asante<br>
-                    电话：+233-24-123-4567<br>
-                    邮箱：k.asante@ghanapackaging.com.gh<br>
-                    主营：生活用纸包装、化工包装，年采购量约$200,000
-                </li>
-            </ul>
+            <div class="scrollable-container">
+                <div class="scrollable-item">
+                    <h4>Packaging Solutions Africa Ltd.</h4>
+                    <p><strong>国家：</strong>尼日利亚</p>
+                    <p><strong>联系人：</strong>Adebayo Johnson</p>
+                    <p><strong>电话：</strong>+234-80-1234-5678</p>
+                    <p><strong>主营：</strong>食品包装、工业包装</p>
+                    <p><strong>年采购量：</strong>约$500,000</p>
+                </div>
+                <div class="scrollable-item">
+                    <h4>East Africa Packaging Distributors</h4>
+                    <p><strong>国家：</strong>肯尼亚</p>
+                    <p><strong>联系人：</strong>James Mwangi</p>
+                    <p><strong>电话：</strong>+254-70-9876-5432</p>
+                    <p><strong>主营：</strong>零售包装、定制包装设计</p>
+                    <p><strong>年采购量：</strong>约$300,000</p>
+                </div>
+                <div class="scrollable-item">
+                    <h4>Tanzania Packaging Co.</h4>
+                    <p><strong>国家：</strong>坦桑尼亚</p>
+                    <p><strong>联系人：</strong>Fatima Juma</p>
+                    <p><strong>电话：</strong>+255-75-2468-1357</p>
+                    <p><strong>主营：</strong>农业包装、食品包装</p>
+                    <p><strong>年采购量：</strong>约$180,000</p>
+                </div>
+                <div class="scrollable-item">
+                    <h4>Uganda Plastic Importers</h4>
+                    <p><strong>国家：</strong>乌干达</p>
+                    <p><strong>联系人：</strong>Robert Mugisha</p>
+                    <p><strong>电话：</strong>+256-78-3691-2580</p>
+                    <p><strong>主营：</strong>生活用纸包装、化工包装</p>
+                    <p><strong>年采购量：</strong>约$150,000</p>
+                </div>
+                <div class="scrollable-item">
+                    <h4>Ghana Packaging Imports</h4>
+                    <p><strong>国家：</strong>加纳</p>
+                    <p><strong>联系人：</strong>Kwame Asante</p>
+                    <p><strong>电话：</strong>+233-24-123-4567</p>
+                    <p><strong>主营：</strong>生活用纸包装、化工包装</p>
+                    <p><strong>年采购量：</strong>约$200,000</p>
+                </div>
+            </div>
             <p style="margin-top: 15px; font-size: 0.9rem; color: #6c757d;">注意：以上联系方式已初步验证，建议通过egatee平台进行进一步背景调查和对接，确保交易安全。</p>
         </section>
         
@@ -934,29 +1103,29 @@
             
             <div class="highlight">
                 <h3 style="color: var(--info); margin-bottom: 15px;">egatee能为志腾彩印解决的核心问题</h3>
-                <ul>
-                    <li><strong>市场开发成本高：</strong>通过平台数字化工具和本地团队，大幅降低市场开发成本和时间</li>
-                    <li><strong>交易信任问题：</strong>平台提供信用认证、交易担保和纠纷处理机制</li>
-                    <li><strong>跨境支付难题：</strong>支持多种本地支付方式，解决非洲跨境支付难题</li>
-                    <li><strong>物流配送复杂：</strong>整合专业物流资源，提供门到门配送和本地仓储服务</li>
-                    <li><strong>本地化服务缺失：</strong>提供本地语言支持、市场推广和售后服务协调</li>
-                </ul>
+                <div class="two-column-layout">
+                    <div>
+                        <ul>
+                            <li><strong>市场开发成本高：</strong>通过平台数字化工具和本地团队，大幅降低市场开发成本和时间</li>
+                            <li><strong>交易信任问题：</strong>平台提供信用认证、交易担保和纠纷处理机制</li>
+                            <li><strong>跨境支付难题：</strong>支持多种本地支付方式，解决非洲跨境支付难题</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li><strong>物流配送复杂：</strong>整合专业物流资源，提供门到门配送和本地仓储服务</li>
+                            <li><strong>本地化服务缺失：</strong>提供本地语言支持、市场推广和售后服务协调</li>
+                            <li><strong>市场信息不对称：</strong>提供真实的非洲市场需求和价格数据</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <h3 style="margin-top: 25px; color: var(--packaging-blue);">选择egatee的独特优势</h3>
-            <ul style="list-style-type: none;">
-                <li style="padding: 12px 0; border-bottom: 1px solid rgba(42, 109, 204, 0.1);"><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i><strong>精准匹配：</strong>基于AI算法的智能匹配系统，精准对接非洲包装行业采购商</li>
-                <li style="padding: 12px 0; border-bottom: 1px solid rgba(42, 109, 204, 0.1);"><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i><strong>样品寄送服务：</strong>平台支持样品寄送和本地展示，提高产品接触率</li>
-                <li style="padding: 12px 0; border-bottom: 1px solid rgba(42, 109, 204, 0.1);"><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i><strong>市场数据支持：</strong>提供非洲各国包装市场趋势、价格数据和竞品分析</li>
-                <li style="padding: 12px 0; border-bottom: 1px solid rgba(42, 109, 204, 0.1);"><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i><strong>本地验厂服务：</strong>非洲采购商可通过平台预约验厂，增强信任度</li>
-                <li style="padding: 12px 0;"><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i><strong>营销推广支持：</strong>平台提供产品展示、线上展会、行业报告等多维度营销支持</li>
-            </ul>
             
             <div class="highlight" style="margin-top: 30px;">
                 <h3 style="color: var(--packaging-green); margin-bottom: 15px;">志腾彩印通过egatee的预期收益</h3>
                 <div class="data-grid">
                     <div class="data-item">
-                        <h3>6-9个月</h3>
+                        <h3>3-6个月</h3>
                         <p>市场进入周期缩短</p>
                     </div>
                     <div class="data-item">
